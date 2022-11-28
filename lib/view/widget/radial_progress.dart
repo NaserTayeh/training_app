@@ -1,9 +1,13 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, unnecessary_const
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unnecessary_const, prefer_const_constructors
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
+
+import '../../provider/diet_app_provider.dart';
 
 class RadialProgress extends StatelessWidget {
   final double height, width, progress;
@@ -22,16 +26,16 @@ class RadialProgress extends StatelessWidget {
             textAlign: TextAlign.center,
             text: TextSpan(
               style: DefaultTextStyle.of(context).style,
-              children: const <TextSpan>[
+              children: <TextSpan>[
                 TextSpan(
-                    text: '1731',
+                    text: Provider.of<DietProvider>(context).users[0].kcalLeft,
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 32,
                         color: const Color(0xFF200087))),
                 TextSpan(text: "\n"),
                 TextSpan(
-                    text: "kcal left",
+                    text: "calories_burned".tr(),
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 18,

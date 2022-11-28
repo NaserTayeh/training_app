@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings
 
+import 'package:animations/animations.dart';
+import 'package:diet_trainingapp/view/screen/meal_detail_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -23,14 +25,28 @@ class MealCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Flexible(
-                fit: FlexFit.tight,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: Image.asset(
-                      meal.imagePath,
-                      width: 150,
-                      fit: BoxFit.fill,
-                    ))),
+              fit: FlexFit.tight,
+              child: OpenContainer(
+                closedShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                transitionDuration: const Duration(seconds: 1),
+                openBuilder: (context, _) {
+                  return MealDetailScreen(meal: meal);
+                },
+                closedBuilder: (context, openContainer) {
+                  return GestureDetector(
+                    onTap: openContainer,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: Image.asset(
+                          meal.imagePath,
+                          width: 150,
+                          fit: BoxFit.fill,
+                        )),
+                  );
+                },
+              ),
+            ),
             Flexible(
                 fit: FlexFit.tight,
                 child: Padding(

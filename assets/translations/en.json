@@ -1,0 +1,12 @@
+{
+    "time": "60 min",
+    "level": "easy",
+    "welcome": "Hello",
+    "meals_name": "MEALS FOR TODAY ",
+    "calories_burned": "kcal left",
+    "unit": "g left",
+    "training_label": "YOUR NEXT WORKOUT",
+    "training_location": "UPPER BODY",
+    "ingredint_label": "INGREDIENTS",
+    "prepartion_label": "PREPARTION"
+}
